@@ -502,6 +502,7 @@ void init() {
         allegro_message(allegro_error);
         exit(-1);
     }
+    set_window_title("Serpiente");
 
     install_timer();
     install_keyboard();
