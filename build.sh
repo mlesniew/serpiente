@@ -18,3 +18,8 @@ docker cp "$CONTAINER:/code/liballeg.so.4.4" .
 
 # remove the container
 docker rm "$CONTAINER"
+
+echo
+echo
+echo "  All done, run ./serpiente to play the game."
+echo
