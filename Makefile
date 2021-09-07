@@ -1,5 +1,6 @@
-CFLAGS=-O2 $(shell pkg-config --cflags allegro)
-LDFLAGS=$(shell pkg-config --libs allegro)
+CFLAGS=$(shell pkg-config --cflags allegro)
+CXXFLAGS=-O3
+LDFLAGS=$(shell pkg-config --libs allegro) -Wl,-rpath,.
 EXECUTABLE=serpiente
 
 all: $(EXECUTABLE)
@@ -8,6 +9,6 @@ clean:
 	rm -f $(EXECUTABLE)
 
 serpiente: Serpiente.cpp
-	$(CXX) $< $(LDFLAGS) $(CFLAGS) -o $@
+	$(CXX) $< $(LDFLAGS) $(CXXFLAGS) $(CFLAGS) -o $@
 
 .PHONY: all clean
