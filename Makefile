@@ -8,7 +8,7 @@ all: $(EXECUTABLE)
 clean:
 	rm -f $(EXECUTABLE)
 
-serpiente: Serpiente.cpp
-	$(CXX) $< $(LDFLAGS) $(CXXFLAGS) $(CFLAGS) -o $@
+$(EXECUTABLE): $(wildcard *.cpp)
+	$(CXX) $(CXXFLAGS) $(CFLAGS) $^ $(LDFLAGS) -o $@
 
 .PHONY: all clean

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+NAME=serpiente
+
 # exit on errors
 set -e
 
@@ -7,11 +9,11 @@ set -e
 cd "$(dirname "$0")"
 
 # build
-docker build -t serpiente .
+docker build -t "$NAME" .
 
 # extract the result binary
-CONTAINER=$(docker create serpiente)
-docker cp "$CONTAINER:/code/serpiente" .
+CONTAINER=$(docker create $NAME)
+docker cp "$CONTAINER:/code/$NAME" .
 
 # extract the allegro so library too so it doesn't have to be installed
 docker cp "$CONTAINER:/code/liballeg.so.4.4" .
@@ -21,5 +23,6 @@ docker rm "$CONTAINER"
 
 echo
 echo
-echo "  All done, run ./serpiente to play the game."
+echo "  All done, run ./$NAME to play the game."
+echo
 echo
